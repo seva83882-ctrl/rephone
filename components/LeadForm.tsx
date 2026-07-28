@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import FadeIn from "./FadeIn";
 import styles from "./LeadForm.module.css";
 
 type FormFields = {
@@ -66,7 +65,6 @@ export default function LeadForm() {
   };
 
   return (
-    <FadeIn>
       <section
         id="lead"
         className={styles.section}
@@ -174,6 +172,5 @@ export default function LeadForm() {
           </div>
         </div>
       </section>
-    </FadeIn>
   );
 }
