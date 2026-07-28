@@ -1,10 +1,10 @@
 "use client";
 
 import {
+  ReactNode,
   useEffect,
   useRef,
   useState,
-  ReactNode,
 } from "react";
 
 type Props = {
@@ -24,11 +24,12 @@ export default function FadeIn({ children }: Props) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect();
+          observer.unobserve(element);
         }
       },
       {
-        threshold: 0.15,
+        threshold: 0.08,
+        rootMargin: "0px 0px -80px 0px",
       }
     );
 
@@ -40,7 +41,7 @@ export default function FadeIn({ children }: Props) {
   return (
     <div
       ref={ref}
-      className={visible ? "fade visible" : "fade"}
+      className={visible ? "fade fadeVisible" : "fade"}
     >
       {children}
     </div>
