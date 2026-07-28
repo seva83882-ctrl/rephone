@@ -53,15 +53,21 @@ button {
 
 .fade {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(14px);
+  filter: blur(4px);
+
   transition:
-    opacity .7s ease,
-    transform .7s cubic-bezier(.2,.8,.2,1);
+    opacity .65s ease,
+    transform .65s cubic-bezier(.22,1,.36,1),
+    filter .65s ease;
+
+  will-change: opacity, transform;
 }
 
-.fade.visible {
+.fadeVisible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 ::selection {
