@@ -1,9 +1,7 @@
-import FadeIn from "./FadeIn";
 import styles from "./Reviews.module.css";
 
 export default function Reviews() {
   return (
-    <FadeIn>
       <section className={styles.section}>
         <div className="container">
           <div className={styles.wrapper}>
@@ -41,6 +39,5 @@ export default function Reviews() {
           </div>
         </div>
       </section>
-    </FadeIn>
   );
 }
