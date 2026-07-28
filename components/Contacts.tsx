@@ -1,9 +1,7 @@
-import FadeIn from "./FadeIn";
 import styles from "./Contacts.module.css";
 
 export default function Contacts() {
   return (
-    <FadeIn>
       <section
         id="contacts"
         className={styles.section}
@@ -62,6 +60,5 @@ export default function Contacts() {
           </div>
         </div>
       </section>
-    </FadeIn>
   );
 }
