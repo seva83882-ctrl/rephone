@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { services } from "@/lib/data";
-import FadeIn from "./FadeIn";
 import styles from "./Services.module.css";
 
 export default function Services() {
   return (
-    <FadeIn>
       <section
         id="services"
         className={styles.section}
@@ -62,6 +60,5 @@ export default function Services() {
           </ul>
         </div>
       </section>
-    </FadeIn>
   );
 }
