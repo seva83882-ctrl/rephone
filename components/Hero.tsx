@@ -13,11 +13,23 @@ export default function Hero() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const id = setTimeout(() => {
-      setLoaded(true);
-    }, 120);
+    const runAnimation = () => {
+      setLoaded(false);
 
-    return () => clearTimeout(id);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setLoaded(true);
+        });
+      });
+    };
+
+    runAnimation();
+
+    window.addEventListener("pageshow", runAnimation);
+
+    return () => {
+      window.removeEventListener("pageshow", runAnimation);
+    };
   }, []);
 
   const scrollTo = (id: string) => {
