@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import styles from "./Hero.module.css";
 
 const bullets = [
@@ -9,19 +10,37 @@ const bullets = [
 ];
 
 export default function Hero() {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setLoaded(true);
+    }, 120);
+
+    return () => clearTimeout(id);
+  }, []);
+
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   return (
     <section
       className={styles.hero}
-      style={{ backgroundImage: "url('/img/hero.webp')" }}
+      style={{
+        backgroundImage: "url('/img/hero.webp')",
+      }}
     >
       <div className={styles.overlay} />
 
       <div className={`container ${styles.inner}`}>
-        <div className={styles.content}>
+        <div
+          className={`${styles.content} ${
+            loaded ? styles.loaded : ""
+          }`}
+        >
           <h1 className={styles.heading}>
             ремонт телефона
             <br />
@@ -30,7 +49,10 @@ export default function Hero() {
 
           <ul className={styles.bullets}>
             {bullets.map((item) => (
-              <li key={item} className={styles.bullet}>
+              <li
+                key={item}
+                className={styles.bullet}
+              >
                 {item}
               </li>
             ))}
@@ -43,6 +65,7 @@ export default function Hero() {
             >
               узнать цену
             </button>
+
             <button
               className={styles.btnSecondary}
               onClick={() => scrollTo("services")}
@@ -50,6 +73,10 @@ export default function Hero() {
               что ремонтируем
             </button>
           </div>
+
+          <p className={styles.micro}>
+            ответ обычно в течение 5–10 минут
+          </p>
         </div>
       </div>
     </section>
